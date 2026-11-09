@@ -215,6 +215,109 @@ td .sm{display:block;font-size:12.5px;color:var(--muted);line-height:1.15;margin
 .fh .holecard{margin-left:auto}
 .rv .rvt.shine{animation:pop .55s cubic-bezier(.2,1.6,.4,1) forwards, shine 1.2s ease-in-out .5s 2}
 @keyframes shine{0%,100%{text-shadow:0 0 0 rgba(242,194,48,0)}50%{text-shadow:0 0 18px rgba(242,194,48,.95),0 0 40px rgba(242,194,48,.6)}}
+
+/* Results scoreboard */
+.final{border:0;outline:0;background:none;box-shadow:none;overflow:visible;display:grid;gap:18px}
+.final .bps{border:3px solid #fff;outline:2px solid var(--board);border-radius:4px}
+.sboard{background:var(--board);padding:10px;border-radius:3px;box-shadow:0 14px 34px rgba(0,30,10,.42)}
+.sboard .face{background:#fff;padding:14px 14px 16px;border:2px solid #e9e9e1}
+.sbtitle{display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:10px}
+.sbtitle h2{margin:0;font-family:var(--display);font-weight:900;font-size:clamp(32px,6.5vw,52px);letter-spacing:.14em;color:var(--board);line-height:1}
+.sbtitle .rule{flex:1;height:3px;background:var(--board);max-width:120px}
+.bestb .sbtitle h2{font-size:clamp(24px,5vw,38px)}
+.sbsub{text-align:center;font-family:var(--serif);font-style:italic;color:#4a4a44;font-size:13px;margin:-2px 0 12px}
+.sbgrid{display:grid;grid-template-columns:96px minmax(0,1fr) 64px 118px;gap:4px}
+.sboard .hd{background:var(--board);color:#fff;font-family:var(--display);font-weight:800;font-size:15px;letter-spacing:.12em;text-align:center;padding:6px 4px}
+.sboard .hd.l{text-align:left;padding-left:10px}
+.sboard .t{background:#fbfbf6;border:1px solid #d9d9cf;box-shadow:inset 0 -2px 0 rgba(0,0,0,.06);font-family:var(--display);font-weight:800;font-size:clamp(20px,3.4vw,28px);line-height:1;padding:9px 8px 7px;text-align:center;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#111}
+.sboard .t.l{text-align:left;padding-left:12px}
+.sboard .t.slot{font-size:clamp(12px,2.1vw,15px);letter-spacing:.06em;color:var(--board);display:grid;place-items:center;white-space:normal;line-height:1.05}
+.sboard .t.yr{color:#333}
+.sboard .t.red{color:var(--red)}
+.sboard .t.over{color:var(--board)}
+.sboard .t small{display:block;font-family:var(--body);font-weight:600;font-size:11px;letter-spacing:.03em;color:#666;margin-top:3px;text-transform:none}
+.sboard .t small.ym{display:none}
+.sboard .maj{display:inline-block;vertical-align:middle;margin-left:8px;background:var(--gold);color:#1f2a0f;font-family:var(--body);font-size:10px;font-weight:700;padding:2px 5px;border-radius:2px;letter-spacing:.04em}
+.sboard .totals{display:grid;grid-template-columns:minmax(0,1fr) 118px;gap:4px;margin-top:10px}
+.sboard .lab{background:var(--board);color:#fff;font-family:var(--display);font-weight:800;letter-spacing:.12em;font-size:18px;display:flex;align-items:center;gap:10px;padding:0 12px;min-height:46px}
+.sboard .lab span{margin-left:auto;font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:0;font-size:14px;opacity:.9;text-align:right}
+.sboard .lab.tier{grid-column:1/-1;background:var(--gold);color:#1f2a0f;justify-content:center;font-size:22px;letter-spacing:.14em}
+.sboard .t.big{font-size:clamp(34px,6vw,48px);padding:8px 6px 4px}
+.bestb .t.big{font-size:clamp(28px,5vw,40px)}
+.bestb .lab.tier{background:#e9dca8}
+.sbrecap{margin-top:12px;display:grid;gap:4px;font-size:13.5px;color:#333}
+.sbrecap p{margin:0}
+.final .act{padding:0;justify-content:center}
+.final .act .btn{box-shadow:0 2px 6px rgba(0,30,10,.25);border:0;padding:10px 18px;font-size:14px}
+.final .act .btn.primary{background:var(--board);color:#fff}
+@media (max-width:560px){
+  .sbgrid{grid-template-columns:58px minmax(0,1fr) 84px}
+  .sboard .yrh,.sboard .t.yr{display:none}
+  .sboard .t small.ym{display:inline;margin:0 0 0 5px;font-size:11.5px}
+  .sboard .t{font-size:21px;padding:8px 5px 6px}
+  .sboard .t.l{padding-left:8px}
+  .sboard .totals{grid-template-columns:minmax(0,1fr) 84px}
+  .sboard .lab{font-size:14px;letter-spacing:.08em}
+  .sboard .lab span{display:none}
+  .sboard .hd{font-size:12px;letter-spacing:.06em}
+  .sboard .face{padding:10px}
+}
+
+.sboard .t{display:flex;flex-direction:column;justify-content:center;align-items:center}
+.sboard .t.l{flex-direction:row;justify-content:flex-start;align-items:center}
+.sboard .t.l .nm{min-width:0;overflow:hidden;text-overflow:ellipsis}
+.sboard .t.l .maj,.sboard .t.l small.ym{flex:none}
+.sboard .t.slot{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+
+/* Sheet (mobile slot picker) */
+.bs-back{position:fixed;inset:0;background:rgba(5,30,15,.5);z-index:40}
+.bsheet{position:fixed;left:0;right:0;bottom:0;z-index:41;background:var(--paper);color:var(--ink);border-radius:16px 16px 0 0;padding:10px max(16px,env(safe-area-inset-right,0px)) calc(14px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));box-shadow:0 -10px 30px rgba(0,0,0,.3);max-height:86vh;overflow:auto;animation:sheetup .22s ease-out}
+@keyframes sheetup{from{transform:translateY(100%)}to{transform:none}}
+.bsheet .grab{width:42px;height:5px;border-radius:3px;background:#cfcabb;margin:0 auto 12px}
+.bsheet h3{margin:0;font-size:21px;font-weight:700}
+.bsheet h3 .yr{color:var(--muted);font-weight:500}
+.bsheet .line{margin:6px 0 0;font-size:13px;color:var(--muted)}
+.bsheet .wl{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.bsheet .ask{margin:14px 0 6px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--board)}
+.bsheet .slotsel{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.bsheet .slotsel button{min-height:58px;border:1.5px solid var(--board);border-radius:10px;background:#fff;text-align:left;padding:8px 12px;display:grid;align-content:center;gap:2px;color:var(--ink)}
+.bsheet .slotsel button b{font-size:15px}
+.bsheet .slotsel button span{font-family:var(--mono);font-size:13px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bsheet .slotsel button:not(:disabled):active{background:var(--sel)}
+.bsheet .slotsel button:disabled{border-style:dashed;border-color:#cfcabb;background:var(--paper-2);opacity:.75}
+.bsheet .slotsel button.taken b{color:var(--muted)}
+.bsheet .cancel{width:100%;margin-top:8px;min-height:48px;border:0;background:none;color:var(--muted);font-weight:600;font-size:15px}
+body.sheet-open{overflow:hidden}
+
+@media (max-width:640px){
+  body{padding-bottom:calc(86px + env(safe-area-inset-bottom,0px))}
+  /* Main actions live at the bottom, in thumb reach */
+  #spin{position:fixed;z-index:30;left:max(16px,env(safe-area-inset-left,0px));right:calc(max(16px,env(safe-area-inset-right,0px)) + 152px);bottom:calc(12px + env(safe-area-inset-bottom,0px));height:56px;font-size:21px;box-shadow:0 6px 18px rgba(0,30,10,.45)}
+  #spin:disabled{opacity:1;background:#ece9db;color:#6b6b5e;box-shadow:0 6px 18px rgba(0,30,10,.35);font-size:17px;letter-spacing:.04em}
+  #respin{position:fixed;z-index:30;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(12px + env(safe-area-inset-bottom,0px));width:142px;height:56px;justify-content:center;background:var(--board);border:2px solid #fff;font-size:16px;box-shadow:0 6px 18px rgba(0,30,10,.45)}
+  #respin:disabled{opacity:1;background:#2c5a43;color:rgba(255,255,255,.55);border-color:rgba(255,255,255,.35)}
+  body.done #spin,body.done #respin{display:none}
+  body.sheet-open #spin,body.sheet-open #respin{display:none}
+  .row1 .score{display:block}
+  .row1 .score b{font-size:28px}
+  .help{width:40px;height:40px}
+  .seg button{padding:8px 10px}
+  /* While picking: board collapses into a slim bar pinned to the top */
+  body.picking .board{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;padding:8px 10px;gap:0}
+  body.picking .board .slots,body.picking .board .meta{display:none}
+  body.picking .row1 .reel{height:50px}
+  body.picking .row1 .reel .v{font-size:26px}
+  /* Player list: page scroll, columns that fit */
+  .tw{max-height:none;overflow:visible}
+  table{table-layout:fixed}
+  th{top:var(--barh,0px);padding:9px 4px;font-size:10.5px}
+  th:first-child{padding-left:10px}
+  th:nth-child(4){width:30px} th:nth-child(5){width:34px} th:nth-child(6){width:40px} th:nth-child(7){width:48px} th:nth-child(8){width:62px}
+  td{padding:11px 4px;font-size:14.5px}
+  td:first-child{padding-left:10px;max-width:none;font-size:15px}
+  td .sm{font-size:11px}
+  tr.exp{display:none}
+}
 </style>
 </head>
 <body>
@@ -267,6 +370,8 @@ td .sm{display:block;font-size:12.5px;color:var(--muted);line-height:1.15;margin
   </section>
 
   <section class="final" id="final" hidden></section>
+  <div class="bs-back" id="bsback" hidden></div>
+  <div class="bsheet" id="bsheet" hidden role="dialog" aria-modal="true" aria-label="Choose a slot"></div>
 
   <details>
     <summary>About the data</summary>
@@ -303,6 +408,7 @@ function strength(r,s){ const v=r[s.idx]; if(s.k==='w') return (r[3]+0.5*r[4])/s
 const players=y=>DATA.s[y];
 
 function newGame(mode){
+  document.body.classList.remove('picking','done'); closeSheet();
   rng = mode==='daily'? mulberry(seedFrom('cp-'+todayStr())) : Math.random;
   G={mode, respins:RESPINS, team:{}, year:null, used:new Set(), sel:null, spinning:false, history:[]};
   $('mode-daily').setAttribute('aria-pressed',mode==='daily'); $('mode-free').setAttribute('aria-pressed',mode!=='daily');
@@ -337,7 +443,7 @@ function animateYear(final){ return new Promise(res=>{ const w=$('reel'), v=$('y
 async function spin(isRespin){
   if(G.spinning || filled()>=PICKS) return;
   if(isRespin){ if(G.respins<=0||!G.awaiting) return; G.respins--; G.used.delete(G.year); }
-  G.spinning=true; G.sel=null; $('spin').disabled=true; $('sheet').hidden=true; render();
+  G.spinning=true; G.sel=null; $('spin').disabled=true; $('sheet').hidden=true; closeSheet(); document.body.classList.remove('picking'); render();
   const prev=G.year; let y=drawYear(); if(isRespin && YEARS.length>G.used.size+1){ while(y===prev) y=drawYear(); }
   G.year=y; G.used.add(y);
   await animateYear(y);
@@ -349,10 +455,11 @@ function showField(){
   const topMoney=list[0];
   $('meta').textContent=y+' season · '+list.length+' players · money leader '+topMoney[0]+', '+topMoney[7].toFixed(1)+'% of the purse ('+money(topMoney[11])+')';
   $('sheet').hidden=false; $('sheet-title').textContent='Pick one golfer from '+y; $('q').value='';
-  renderTable();
+  $('spin').textContent='Pick a golfer';
+  document.body.classList.add('picking'); renderTable(); requestAnimationFrame(setBarH);
 }
 const COLS=[
-  {h:'Player', i:0, cls:''},{h:'Ev', i:1, cls:'c-ev'},{h:'Cut %', i:10, cls:'c-cut'},{h:'W', i:3},{h:'T5', i:5},{h:'T10', i:6},{h:'Par', i:8, asc:true},{h:'Money %', i:7}
+  {h:'Player', i:0, cls:''},{h:'Ev', i:1, cls:'c-ev'},{h:'Cut %', i:10, cls:'c-cut'},{h:'W', i:3},{h:'T5', i:5},{h:'T10', i:6},{h:'Par', i:8, asc:true},{h:'Money', i:7}
 ];
 function renderTable(){
   const th=$('thead'); th.innerHTML='';
@@ -370,13 +477,35 @@ function renderTable(){
     const z=v=>v?String(v):'<span class="zero">0</span>';
     tr.innerHTML='<td></td><td class="c-ev">'+r[1]+'</td><td class="c-cut">'+Math.round(r[10])+'%</td><td>'+z(r[3])+'</td><td>'+z(r[5])+'</td><td>'+z(r[6])+'</td><td class="'+(r[8]<0?'u':'')+'">'+SLOTS[4].fmt(r[8])+'</td><td>'+r[7].toFixed(1)+'%<span class="sm">'+money(r[11])+'</span></td>';
     tr.firstChild.textContent=r[0]; if(r[4]){ const t=document.createElement('span'); t.className='tag'; t.textContent=r[4]>1?r[4]+' MAJ':'MAJ'; t.title=r[9]; tr.firstChild.appendChild(t); }
-    const choose=()=>{ G.sel=G.sel===r?null:r; renderTable(); const c=$('rows').querySelector('.chip'); if(c){ c.focus({preventScroll:true}); c.closest('tr').scrollIntoView({block:'nearest'}); } };
+    const choose=()=>{ if(isMobile()){ openSheet(r); return; } G.sel=G.sel===r?null:r; renderTable(); const c=$('rows').querySelector('.chip'); if(c){ c.focus({preventScroll:true}); c.closest('tr').scrollIntoView({block:'nearest'}); } };
     tr.addEventListener('click',choose); tr.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();choose();}});
     frag.appendChild(tr);
     if(G.sel===r) frag.appendChild(expandRow(r));
   }
   tb.appendChild(frag);
 }
+// ---- Mobile: slot choice in a bottom sheet ----
+const isMobile=()=>matchMedia('(max-width:640px)').matches;
+function closeSheet(){ const b=$('bsheet'), k=$('bsback'); if(b){ b.hidden=true; k.hidden=true; } document.body.classList.remove('sheet-open'); }
+function openSheet(r){
+  const b=$('bsheet'), k=$('bsback'); const y=G.year;
+  const stats=[r[1]+' events', Math.round(r[10])+'% cuts', r[3]+' W'+(r[4]?' ('+r[4]+' maj)':''), r[5]+' T5', r[6]+' T10', SLOTS[4].fmt(r[8])+' par', r[7].toFixed(1)+'% ('+money(r[11])+')'];
+  b.innerHTML='<div class="grab" aria-hidden="true"></div><h3></h3><p class="line st"></p>'+(r[9]?'<p class="line wl"></p>':'')+'<p class="ask">Put him in:</p><div class="slotsel"></div><button class="cancel" type="button">Cancel</button>';
+  b.querySelector('h3').innerHTML=''; const h=b.querySelector('h3'); h.textContent=r[0]+' '; const sy=document.createElement('span'); sy.className='yr'; sy.textContent=y; h.appendChild(sy);
+  b.querySelector('.st').textContent=stats.join(' · ');
+  if(r[9]) b.querySelector('.wl').textContent='Wins: '+r[9];
+  const box=b.querySelector('.slotsel');
+  for(const s of SLOTS){ const t=G.team[s.k]; const bt=document.createElement('button'); bt.type='button';
+    bt.innerHTML='<b></b><span></span>'; bt.querySelector('b').textContent=s.label;
+    if(t){ bt.disabled=true; bt.classList.add('taken'); bt.querySelector('span').textContent=lastName(t.name)+' ’'+String(t.year).slice(2); }
+    else if(s.k==='cut' && r[1]<s.minEv){ bt.disabled=true; bt.querySelector('span').textContent='needs 15 events'; }
+    else { bt.querySelector('span').textContent=detail(s,r); bt.addEventListener('click',()=>place(r,s)); }
+    box.appendChild(bt); }
+  b.querySelector('.cancel').addEventListener('click',closeSheet);
+  k.hidden=false; b.hidden=false; document.body.classList.add('sheet-open');
+  const first=box.querySelector('button:not(:disabled)'); if(first) first.focus({preventScroll:true});
+}
+function setBarH(){ const bd=document.querySelector('.board'); if(bd) document.documentElement.style.setProperty('--barh', bd.offsetHeight+'px'); }
 function expandRow(r){
   const tr=document.createElement('tr'); tr.className='exp'; const td=document.createElement('td'); td.colSpan=8; tr.appendChild(td);
   td.innerHTML='<div class="q"></div><div class="chips"></div>';
@@ -394,6 +523,7 @@ function place(r,s){
   const bestR=players(y).reduce((a,b)=>strength(b,s)>strength(a,s)?b:a);
   G.team[s.k]={name:r[0], year:y, val:r[s.idx], str:strength(r,s), row:r};
   G.history.push({slot:s, name:r[0], year:y, val:r[s.idx], str:strength(r,s), bestName:bestR[0], bestVal:bestR[s.idx], bestStr:strength(bestR,s), majors:r[4]});
+  closeSheet(); document.body.classList.remove('picking');
   G.awaiting=false; G.sel=null; $('sheet').hidden=true; render();
   if(filled()>=PICKS){ $('spin').disabled=false; $('spin').textContent='Results'; $('meta').textContent='Team complete. Press Results to see your score.'; return; }
   $('spin').disabled=false; $('spin').textContent='Next';
@@ -487,36 +617,58 @@ function reveal(){
   timers.push(setTimeout(()=>{ lab.textContent=t[1]; lab.classList.add('pop'); if(R>=TIERS[1][0]) lab.classList.add('shine'); },popAt));
   timers.push(setTimeout(finish,popAt+1700));
 }
+// ---- Results: a hand-operated tournament scoreboard ----
+const SHORT={w:'WINS',t5:'TOP 5',t10:'TOP 10',cut:'CUT %',par:'UNDER PAR',m:'MONEY'};
+function lastName(n){ const t=n.trim().split(/\s+/); const suf=/^(Jr\.?|Sr\.?|II|III|IV)$/i; return (t.length>2&&suf.test(t[t.length-1])? t.slice(-2).join(' ') : t[t.length-1]).toUpperCase(); }
+function toParTile(name){ if(name==='Hole in One') return {txt:'ACE',cls:'red'}; const v=REL[name]; return {txt:v===0?'E':(v>0?'+'+v:'−'+Math.abs(v)), cls:v<0?'red':(v>0?'over':'')}; }
+function esc(x){ return String(x).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+function boardRows(picks){ // picks: [{slot,name,year,r}]
+  return picks.map(p=>{ const s=p.slot, r=p.r, yy=String(p.year).slice(2);
+    const maj = s.k==='w'&&r[4]? '<span class="maj">'+r[4]+' MAJ</span>' : '';
+    let main=s.fmt(r[s.idx]), sub='', cls='';
+    if(s.k==='cut'){ main=Math.round(r[10]); sub=r[2]+' of '+r[1]; }
+    if(s.k==='m'){ sub=money(r[11]); }
+    if(s.k==='par'){ main=r[8]<0?'−'+Math.abs(r[8]):SLOTS[4].fmt(r[8]); if(r[8]<0) cls=' red'; }
+    return '<div class="t slot">'+SHORT[s.k]+'</div>'+
+      '<div class="t l"><span class="nm">'+esc(lastName(p.name))+'</span><small class="ym">’'+yy+'</small>'+maj+'</div>'+
+      '<div class="t yr">'+yy+'</div>'+
+      '<div class="t'+cls+'">'+main+(sub?'<small>'+esc(sub)+'</small>':'')+'</div>'; }).join('');
+}
+function boardHTML(o){
+  return '<div class="sboard'+(o.cls?' '+o.cls:'')+'"><div class="face">'+
+    '<div class="sbtitle"><span class="rule"></span><h2>'+o.title+'</h2><span class="rule"></span></div>'+
+    '<p class="sbsub">'+esc(o.sub)+'</p>'+
+    '<div class="sbgrid" role="table" aria-label="'+esc(o.title)+'"><div class="hd">SLOT</div><div class="hd l">PLAYER</div><div class="hd yrh">YEAR</div><div class="hd">STAT</div>'+boardRows(o.picks)+'</div>'+
+    '<div class="totals"><div class="lab">'+o.scoreLabel+(o.note?'<span>'+esc(o.note)+'</span>':'')+'</div><div class="t big '+o.tile.cls+'">'+o.tile.txt+'</div>'+
+    '<div class="lab tier">'+esc(o.tier.toUpperCase())+'</div></div>'+
+    (o.recap&&o.recap.length? '<div class="sbrecap">'+o.recap.map(x=>'<p>'+esc(x)+'</p>').join('')+'</div>' : '')+
+    '</div></div>';
+}
 function showFinal(){
   const S=teamStrength(), R=rating(S), best=bestPossible(), BR=rating(best.S), t=tierOf(R);
   const perfect = S >= best.S-1e-9;
-  const f=$('final'); f.hidden=false;
-  f.innerHTML='<div class="bps" hidden><b>Best Possible Score!</b><span>You made the best picks your spins allowed.</span></div>'+
-    '<div class="fh"><div><div class="k">'+(G.mode==='daily'?'Daily · '+todayStr():'Free play')+'</div><div class="grade"></div><div class="gsub"></div></div><div class="holecard"></div></div>'+
-    '<div class="recap"></div><div class="picks"></div><div class="bestwrap" hidden><h3>Your best possible team</h3><p class="bsub"></p><div class="picks bestp"></div></div>'+
-    '<div class="act"><button class="btn primary" id="again">New team</button><button class="btn" id="copy">Copy result</button></div><textarea class="share" id="sharetxt" rows="8" readonly hidden aria-label="Result text"></textarea>';
-  f.querySelector('.grade').textContent=t[1]; f.querySelector('.gsub').textContent=t[2];
-  if(!G.card) G.card=makeCard(R); const c=G.card; f.querySelector('.holecard').innerHTML=cardHTML(c,false);
-  f.querySelector('.gsub').textContent=t[2]+' A '+c.strokes+' on the '+c.yds+'-yard par-'+c.par+' '+ordHole(c.hole)+'.';
-  const rc=f.querySelector('.recap'); const lines=[];
-  const top=G.history.slice().sort((a,b)=>b.str-a.str)[0];
+  if(!G.card) G.card=makeCard(R); const c=G.card;
+  const mine=SLOTS.map(s=>({slot:s,name:G.team[s.k].name,year:G.team[s.k].year,r:G.team[s.k].row}));
+  const lines=[]; const top=G.history.slice().sort((a,b)=>b.str-a.str)[0];
   lines.push('Best pick: '+top.name+' ('+top.year+') for '+top.slot.label+', '+top.slot.fmt(top.val)+'.');
   if(!perfect){ const miss=G.history.slice().sort((a,b)=>(b.bestStr-b.str)-(a.bestStr-a.str))[0];
     if(miss.bestStr-miss.str>0.05) lines.push('Biggest miss: in '+miss.year+' you took '+miss.name+' for '+miss.slot.label+' ('+miss.slot.fmt(miss.val)+'). '+miss.bestName+' had '+miss.slot.fmt(miss.bestVal)+'.'); }
-  lines.forEach(x=>{const p=document.createElement('p'); p.textContent=x; rc.appendChild(p);});
-  const row=(box,label,name,year,val)=>{ const d=document.createElement('div'); d.className='pk'; d.innerHTML='<span class="k"></span><span class="who"></span><span class="s num"></span>';
-    d.querySelector('.k').textContent=label; const w=d.querySelector('.who'); w.textContent=name+' '; const sm=document.createElement('small'); sm.textContent=year; w.appendChild(sm); d.querySelector('.s').textContent=val; box.appendChild(d); };
-  const pk=f.querySelector('.picks');
-  for(const s of SLOTS){ const t2=G.team[s.k]; row(pk,s.label,t2.name,t2.year,detail(s,t2.row)); }
-  if(perfect){ f.querySelector('.bps').hidden=false; confetti(); }
-  else { const bw=f.querySelector('.bestwrap'); bw.hidden=false; const bt=tierOf(BR);
-    f.querySelector('.bsub').textContent='From the same six seasons, the best picks would have made '+(/^[AEIOU]/.test(bt[1])?'an ':'a ')+bt[1]+'.';
-    const bp=f.querySelector('.bestp'); for(const s of SLOTS){ const p=best.picks.find(x=>x.slot===s); row(bp,s.label,p.name,p.year,detail(s,p.r)); } }
-  const text=["Hole in One"+(G.mode==='daily'?' · '+todayStr():''), t[1]+' · a '+c.strokes+' on a '+c.yds+'-yard par '+c.par+(perfect?' · Best Possible Score!':'')].concat(SLOTS.map(s=>s.label+': '+G.team[s.k].name+' '+G.team[s.k].year+' ('+detail(s,G.team[s.k].row)+')')).join('\n');
+  const f=$('final'); f.hidden=false;
+  let html = perfect? '<div class="bps"><b>Best Possible Score!</b><span>You made the best picks your spins allowed.</span></div>' : '';
+  html += boardHTML({title:'LEADERS', sub:'Your six picks · '+(G.mode==='daily'?'Daily · '+todayStr():'Free play'), picks:mine,
+    scoreLabel:'YOUR SCORE', note:'a '+c.strokes+' on the '+c.yds+'-yard par-'+c.par+' '+ordHole(c.hole), tile:toParTile(t[1]), tier:t[1], recap:lines});
+  if(!perfect){ const bt=tierOf(BR);
+    const bp=SLOTS.map(s=>{ const p=best.picks.find(x=>x.slot===s); return {slot:s,name:p.name,year:p.year,r:p.r}; });
+    html += boardHTML({title:'BEST POSSIBLE', cls:'bestb', sub:'The best picks from the same six seasons', picks:bp, scoreLabel:'BEST SCORE', tile:toParTile(bt[1]), tier:bt[1]}); }
+  html += '<div class="act"><button class="btn primary" id="again">New team</button><button class="btn" id="copy">Copy result</button></div><textarea class="share" id="sharetxt" rows="8" readonly hidden aria-label="Result text"></textarea>';
+  f.innerHTML=html;
+  if(perfect) confetti();
+  const tp=toParTile(t[1]).txt;
+  const text=["Hole in One"+(G.mode==='daily'?' · '+todayStr():''), t[1]+' ('+tp+') · a '+c.strokes+' on a '+c.yds+'-yard par '+c.par+(perfect?' · Best Possible Score!':'')].concat(SLOTS.map(s=>s.label+': '+G.team[s.k].name+' '+G.team[s.k].year+' ('+detail(s,G.team[s.k].row)+')')).join('\n');
   $('sharetxt').value=text;
   $('again').onclick=()=>{ newGame(G.mode); window.scrollTo({top:0}); };
   $('copy').onclick=async()=>{ try{ await navigator.clipboard.writeText(text); $('copy').textContent='Copied'; }catch(e){ const ta=$('sharetxt'); ta.hidden=false; ta.select(); $('copy').textContent='Select and copy below'; } };
-  $('spin').disabled=true; $('spin').textContent='Done'; $('meta').textContent='';
+  $('spin').disabled=true; $('spin').textContent='Done'; $('meta').textContent=''; document.body.classList.add('done');
   f.scrollIntoView({behavior:'smooth',block:'start'});
 }
 
@@ -529,7 +681,9 @@ function openHelp(){ $('help').hidden=false; $('help-close').focus(); }
 function closeHelp(){ $('help').hidden=true; try{ localStorage.setItem('cp-seen-help','1'); }catch(e){} }
 $('help-btn').addEventListener('click',openHelp); $('help-close').addEventListener('click',closeHelp);
 $('help').addEventListener('click',e=>{ if(e.target===$('help')) closeHelp(); });
-document.addEventListener('keydown',e=>{ if(e.key==='Escape'&&!$('help').hidden) closeHelp(); });
+document.addEventListener('keydown',e=>{ if(e.key==='Escape'&&!$('help').hidden) closeHelp(); if(e.key==='Escape') closeSheet(); });
+$('bsback').addEventListener('click',closeSheet);
+addEventListener('resize',()=>{ if(document.body.classList.contains('picking')) setBarH(); });
 let seen=false; try{ seen=localStorage.getItem('cp-seen-help')==='1'; }catch(e){} if(!seen) $('help').hidden=false;
 newGame('free');
 })();
